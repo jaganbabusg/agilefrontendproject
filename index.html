@@ -174,7 +174,7 @@
                     <th scope="col">After School</th>
                   </tr>
                 </thead>
-                <tbody class="TableBody">
+                <tbody id="TableBody">
                   <tr>
                     <th scope="row">1</th>
                     <td>Mark</td>
@@ -203,25 +203,27 @@
         //Add New Student Details
         document.getElementById("BtStudentAdd").addEventListener("click", function () {
           //Validate Input
-          if (ValidateInput() == false) {
-            return;
-          }
+          // if (ValidateInput() == false) {
+          //   return;
+          // }
           //Add New Student
-          let StudentName = "", StudentDOB = "", StudentClass = "", Subject = [], AfterSchool = "";
+          let StudentName = "", StudentDOB = "", StudentClass = "", Subjects = [], AfterSchool = "";
           StudentName = document.getElementById("StudentName").value;
           StudentDOB = document.getElementById("StudentDOB").value;
           StudentClass = document.getElementById("StudentClass").value;
-          for (x in document.querySelectorAll("input[name='Subjects']:checked")) {
-            Subject.push(document.querySelectorAll("input[name='Subjects']")[x].value);
+          for (let i = 0; i < document.querySelectorAll("input[name='Subjects']").length; i++) {
+            if (document.querySelectorAll("input[name='Subjects']")[i].checked == true) {
+              Subjects.push(document.querySelectorAll("input[name='Subjects']")[i].value);
+            }
           }
           AfterSchool = document.querySelector("input[name='AfterSchool']:checked").value;
           let NewStudent = {
-            ID: StudentID, StudentName, StudentDOB, StudentClass, Subject, AfterSchool
+            "ID": StudentID, "StudentName": StudentName, "StudentDOB": StudentDOB, "StudentClass": StudentClass, "Subjects": Subjects, "AfterSchool": AfterSchool
           };
           StudentList.push(NewStudent);
           StudentID += 1;
-          //console.log(StudentList);
-          console.log(StudentID);
+          LoadList();
+          ClearInput();
         })
         //Update Existing Student Details
         document.getElementById("BtStudentUpdate").addEventListener("click", function () {
@@ -278,9 +280,9 @@
         }
         //Load List
         function LoadList() {
-          document.getElementsByClassName("TableBody").innerHTML = "";
+          document.getElementById("TableBody").innerHTML = "";
           for (let i = 0; i < StudentList.length; i++) {
-            document.getElementsByClassName("TableBody").innerHTML += `<tr>
+            document.getElementById("TableBody").innerHTML += `<tr>
                   <td scope="row">${StudentList[i].ID}</td>
                   <td>${StudentList[i].StudentName}</td>
                   <td>${StudentList[i].StudentClass}</td>
