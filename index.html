@@ -9,20 +9,28 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
   <style>
     table {
-      width: 620px; /* 140px * 5 column + 16px scrollbar width */
+      width: 620px;
       border-spacing: 0;
-      border:1px solid blue;
+      border: 1px solid blue;
     }
-    tbody, thead tr { display: block; }
+
+    tbody,
+    thead tr {
+      display: block;
+    }
+
     tbody {
-        height: 100px;
-        overflow-y: auto;
-        overflow-x: hidden;
+      height: 100px;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
-    tbody td, thead th {
-    	border:1px solid blue;
-        width: 150px;
+
+    tbody td,
+    thead th {
+      border: 1px solid blue;
+      width: 150px;
     }
+
     .ErrorMessage {
       color: red;
       font-size: 14pt;
@@ -62,7 +70,7 @@
     <div class="container-fluid">
       <div class="row">
         <!-- Side Bar -->
-        <div class="col-2">
+        <div class="col-1 p-0">
           <div class="d-flex flex-column text-white bg-dark" style="height:100%;">
             <ul class="nav nav-pills flex-column mb-auto">
               <li>
@@ -71,7 +79,6 @@
               <li class="nav-item">
                 <a href="#" class="nav-link active" aria-current="page">Students</a>
               </li>
-
               <li>
                 <a href="#" class="nav-link text-white">Teachers</a>
               </li>
@@ -85,28 +92,28 @@
           </div>
         </div>
         <!--Content-->
-        <div class="col-10">
+        <div class="col-9">
           <br>
           <div class="row">
             <div class="col">
-              <div class="row">
+              <div class="row" style="height: 50px;">
                 <label for="StudentName" class="col-sm-3 form-label">Student Name :</label>
                 <div class="col">
-                  <input type="text" class="form-control" style="height:40px" id="StudentName" />
+                  <input type="text" class="form-control" id="StudentName" />
                 </div>
               </div>
               <!-- Student Date of Birth -->
-              <div class="row">
+              <div class="row" style="height: 50px;">
                 <label for="StudentDOB" class="col-sm-3 form-label">Student Birth Date :</label>
                 <div class="col">
-                  <input type="date" class="form-control" style="height:40px" id="StudentDOB" />
+                  <input type="date" class="form-control" id="StudentDOB" />
                 </div>
               </div>
               <!-- Student Class -->
-              <div class="row">
+              <div class="row" style="height: 50px;">
                 <label for="StudentClass" class="col-sm-3 form-label">Class :</label>
                 <div class="col">
-                  <select class="form-select" style="height:40px" id="StudentClass" name="StudentClass" value="">
+                  <select class="form-select" id="StudentClass" name="StudentClass" value="">
                     <option></option>
                     <option>Primary 1</option>
                     <option>Primary 2</option>
@@ -178,41 +185,47 @@
                   </tr>
                 </thead>
                 <tbody id="TableBody">
-                  <tr onmouseover="ChangeColor(this, true);" onmouseout="ChangeColor(this, false);" onclick="ReadValues(this);">
-                  <td>1</td>
-                  <td>Jagan</td>
-                  <td>Primary 1</td>
-                  <td>Home Care</td>
+                  <tr onmouseover="ChangeColor(this, true)" onmouseout="ChangeColor(this, false)"
+                    onclick="ReadValues(this)">
+                    <td>1</td>
+                    <td>Jagan</td>
+                    <td>Primary 1</td>
+                    <td>Home Care</td>
                   </tr>
-                  <tr onmouseover="ChangeColor(this, true);" onmouseout="ChangeColor(this, false);" onclick="ReadValues(this);">
-                  <td>2</td>
-                  <td>Jagan</td>
-                  <td>Primary 2</td>
-                  <td>Home Care</td>
+                  <tr onmouseover="ChangeColor(this, true)" onmouseout="ChangeColor(this, false)"
+                    onclick="ReadValues(this)">
+                    <td>2</td>
+                    <td>Jagan</td>
+                    <td>Primary 2</td>
+                    <td>Home Care</td>
                   </tr>
-                  <tr onmouseover="ChangeColor(this, true);" onmouseout="ChangeColor(this, false);" onclick="ReadValues(this);">
-                  <td>3</td>
-                  <td>Jagan</td>
-                  <td>Primary 3</td>
-                  <td>Home Care</td>
+                  <tr onmouseover="ChangeColor(this, true)" onmouseout="ChangeColor(this, false)"
+                    onclick="ReadValues(this)">
+                    <td>3</td>
+                    <td>Jagan</td>
+                    <td>Primary 3</td>
+                    <td>Home Care</td>
                   </tr>
-                  <tr onmouseover="ChangeColor(this, true);" onmouseout="ChangeColor(this, false);" onclick="ReadValues(this);">
-                  <td>4</td>
-                  <td>Jagan</td>
-                  <td>Primary 4</td>
-                  <td>Home Care</td>
+                  <tr onmouseover="ChangeColor(this, true)" onmouseout="ChangeColor(this, false)"
+                    onclick="ReadValues(this)">
+                    <td>4</td>
+                    <td>Jagan</td>
+                    <td>Primary 4</td>
+                    <td>Home Care</td>
                   </tr>
-                  <tr onmouseover="ChangeColor(this, true);" onmouseout="ChangeColor(this, false);" onclick="ReadValues(this);">
-                  <td>5</td>
-                  <td>Jagan</td>
-                  <td>Primary 5</td>
-                  <td>Home Care</td>
+                  <tr onmouseover="ChangeColor(this, true)" onmouseout="ChangeColor(this, false)"
+                    onclick="ReadValues(this)">
+                    <td>5</td>
+                    <td>Jagan</td>
+                    <td>Primary 5</td>
+                    <td>Home Care</td>
                   </tr>
-                  <tr onmouseover="ChangeColor(this, true);" onmouseout="ChangeColor(this, false);" onclick="ReadValues(this);">
-                  <td>6</td>
-                  <td>Jagan</td>
-                  <td>Primary 6</td>
-                  <td>Home Care</td>
+                  <tr onmouseover="ChangeColor(this, true)" onmouseout="ChangeColor(this, false)"
+                    onclick="ReadValues(this)">
+                    <td>6</td>
+                    <td>Jagan</td>
+                    <td>Primary 6</td>
+                    <td>Home Care</td>
                   </tr>
                 </tbody>
               </table>
@@ -230,171 +243,181 @@
     </div>
   </div>
   <!--Scripts-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"></script>
-    <script>
-      window.addEventListener("load", function () {
-        //Students Array and Student iD
-        let StudentList = [], StudentID = 0, SelectedStudentID=0;
-        //Add New Student Details
-        document.getElementById("BtStudentAdd").addEventListener("click", function () {
-          //Check for Selected Item in Table
-          if (SelectedStudentID>0){
-            alert("Selected Student cannot be Added.\nClick Update or Delete.");
-            return;
-          }
-          //Validate Input
-          if (ValidateInput() == false) {
-            return;
-          }
-          //Add New Student
-          StudentList.push(AddStudent(StudentID));
-          StudentID += 1;
-          LoadList();
-          ClearInput();
-        })
-        //Update Existing Student Details
-        document.getElementById("BtStudentUpdate").addEventListener("click", function () {
-          //Check for Selected Item in Table
-          if (SelectedStudentID==0){
-            alert("Select the Student in the table below.");
-            return;
-          }
-          //Validate Input
-          if (ValidateInput() == false) {
-            return;
-          }
-          //Update Student Details
-          if (confirm("Do you want to Update selected Student details?") == false){
-            return;
-          }
-          for (let i =0; i< StudentList.length; i++){
-            if (StudentList[i].ID == SelectedStudentID){
-              StudentList[i]=AddStudent(SelectedStudentID);
-              break;
-            }
-          }
-          LoadList();
-          ClearInput();
-        })
-        //Delete Existing Student Details
-        document.getElementById("BtStudentDelete").addEventListener("click", function () {
-          //Check for Selected Item in Table
-          if (SelectedStudentID==0){
-            alert("Select the Student in the table below.");
-            return;
-          }
-          if (confirm("Do you want to Delete selected Student details?") == false){
-            return;
-          }
-          for (let i =0; i< StudentList.length; i++){
-            if (StudentList[i].ID == SelectedStudentID){
-              StudentList.slice(i,1);
-              break;
-            }
-          }
-          LoadList();
-          ClearInput();
-        })
-        //New Student
-        function AddStudent(StudentID){
-          let StudentName = "", StudentDOB = "", StudentClass = "", Subjects = [], AfterSchool = "";
-          StudentName = document.getElementById("StudentName").value;
-          StudentDOB = document.getElementById("StudentDOB").value;
-          StudentClass = document.getElementById("StudentClass").value;
-          for (let i = 0; i < document.querySelectorAll("input[name='Subjects']").length; i++) {
-            if (document.querySelectorAll("input[name='Subjects']")[i].checked == true) {
-              Subjects.push(document.querySelectorAll("input[name='Subjects']")[i].value);
-            }
-          }
-          AfterSchool = document.querySelector("input[name='AfterSchool']:checked").value;
-          let NewStudent = {
-            "ID": StudentID, "StudentName": StudentName, "StudentDOB": StudentDOB, "StudentClass": StudentClass, "Subjects": Subjects, "AfterSchool": AfterSchool
-          };
-          return NewStudent;
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script>
+    //Students Array and Student iD
+    let StudentList = [], StudentID = 0, SelectedStudentID = 0;
+    //Window
+    window.addEventListener("load", function () {
+      //Add New Student Details
+      document.getElementById("BtStudentAdd").addEventListener("click", function () {
+        //Check for Selected Item in Table
+        if (SelectedStudentID > 0) {
+          alert("Selected Student cannot be Added.\nClick Update or Delete.");
+          return;
         }
-        //Clear all Inputs
-        function ClearInput() {
-          document.getElementById("StudentName").value = "";
-          document.getElementById("StudentDOB").value = "";
-          document.getElementById("StudentClass").value = "";
-          for (x in document.querySelectorAll("input[name='Subjects']")) {
-            document.querySelectorAll("input[name='Subjects']")[x].checked = false;
+        //Validate Input
+        if (ValidateInput() == false) {
+          return;
+        }
+        //Add New Student
+        StudentList.push(AddStudent(StudentID));
+        StudentID += 1;
+        LoadList();
+        ClearInput();
+      })
+      //Update Existing Student Details
+      document.getElementById("BtStudentUpdate").addEventListener("click", function () {
+        //Check for Selected Item in Table
+        if (SelectedStudentID == 0) {
+          alert("Select the Student in the table below.");
+          return;
+        }
+        //Validate Input
+        if (ValidateInput() == false) {
+          return;
+        }
+        //Update Student Details
+        if (confirm("Do you want to Update selected Student details?") == false) {
+          return;
+        }
+        for (let i = 0; i < StudentList.length; i++) {
+          if (StudentList[i].ID == SelectedStudentID) {
+            StudentList[i] = AddStudent(SelectedStudentID);
+            break;
+          }
+        }
+        LoadList();
+        ClearInput();
+      })
+      //Delete Existing Student Details
+      document.getElementById("BtStudentDelete").addEventListener("click", function () {
+        //Check for Selected Item in Table
+        if (SelectedStudentID == 0) {
+          alert("Select the Student in the table below.");
+          return;
+        }
+        if (confirm("Do you want to Delete selected Student details?") == false) {
+          return;
+        }
+        for (let i = 0; i < StudentList.length; i++) {
+          if (StudentList[i].ID == SelectedStudentID) {
+            StudentList.slice(i, 1);
+            break;
+          }
+        }
+        LoadList();
+        ClearInput();
+      })
+      //New Student
+      function AddStudent(StudentID) {
+        let StudentName = "", StudentDOB = "", StudentClass = "", Subjects = [], AfterSchool = "";
+        StudentName = document.getElementById("StudentName").value;
+        StudentDOB = document.getElementById("StudentDOB").value;
+        StudentClass = document.getElementById("StudentClass").value;
+        for (let i = 0; i < document.querySelectorAll("input[name='Subjects']").length; i++) {
+          if (document.querySelectorAll("input[name='Subjects']")[i].checked == true) {
+            Subjects.push(document.querySelectorAll("input[name='Subjects']")[i].value);
+          }
+        }
+        AfterSchool = document.querySelector("input[name='AfterSchool']:checked").value;
+        let NewStudent = {
+          "ID": StudentID, "StudentName": StudentName, "StudentDOB": StudentDOB, "StudentClass": StudentClass, "Subjects": Subjects, "AfterSchool": AfterSchool
+        };
+        return NewStudent;
+      }
+
+    })
+    //Clear all Inputs
+    function ClearInput() {
+      document.getElementById("StudentName").value = "";
+      document.getElementById("StudentDOB").value = "";
+      document.getElementById("StudentClass").value = "";
+      for (x in document.querySelectorAll("input[name='Subjects']")) {
+        document.querySelectorAll("input[name='Subjects']")[x].checked = false;
+      }
+      for (x in document.querySelectorAll("input[name='AfterSchool']")) {
+        document.querySelectorAll("input[name='AfterSchool']")[x].checked = false;
+      }
+      SelectedStudentID = 0;
+    }
+    //Check input data for New / Update
+    function ValidateInput() {
+      let IsValidate = true;
+      document.getElementById("ErrorList").innerHTML = "";
+      if (document.getElementById("StudentName").value == "") {
+        document.getElementById("ErrorList").innerHTML += `<li class="ErrorMessage">Enter Student Name!</li>`;
+        IsValidate = false;
+      }
+      if (isNaN(new Date(document.getElementById("StudentDOB").value))) {
+        document.getElementById("ErrorList").innerHTML += `<li class="ErrorMessage">Enter Student Date of Birth!</li>`;
+        IsValidate = false;
+      }
+      if (document.getElementById("StudentClass").value == "") {
+        document.getElementById("ErrorList").innerHTML += `<li class="ErrorMessage">Select Student Class!</li>`;
+        IsValidate = false;
+      }
+      if (document.querySelectorAll("input[name='Subjects']:checked").length < 4) {
+        document.getElementById("ErrorList").innerHTML += `<li class="ErrorMessage">Select Atleast 4 Subjects!</li>`;
+        IsValidate = false;
+      }
+      if (document.querySelectorAll("input[name='AfterSchool']:checked").length == 0) {
+        document.getElementById("ErrorList").innerHTML += `<li class="ErrorMessage">Select After School Care!</li>`;
+        IsValidate = false;
+      }
+      return IsValidate;
+    }
+    //Load List
+    function LoadList() {
+      document.getElementById("TableBody").innerHTML = "";
+      //Add Rows
+      for (let i = 0; i < StudentList.length; i++) {
+        document.getElementById("TableBody").innerHTML += `<tr onmouseover="ChangeColor(this, true);" onmouseout="ChangeColor(this, false);" onclick="ReadValues(this);">
+                    <td>${StudentList[i].ID}</td>
+                    <td>${StudentList[i].StudentName}</td>
+                    <td>${StudentList[i].StudentClass}</td>
+                    <td>${StudentList[i].AfterSchool}</td>
+                    </tr>`;
+      }
+    }
+    //Table Row MouseOver, MouseOut, Click
+    function ChangeColor(TableRow, HighLight) {
+      if (HighLight) {
+        TableRow.style.backgroundColor = "grey";
+      }
+      else {
+        TableRow.style.backgroundColor = "white";
+      }
+    }
+    function ReadValues(TableRow) {
+      ClearInput();
+      SelectedStudentID = parseInt(TableRow.querySelectorAll("td")[0].innerHTML);
+      alert(SelectedStudentID);
+      for (let i = 0; i < StudentList.length; i++) {
+        if (StudentList[i].ID == SelectedStudentID) {
+          document.getElementById("StudentName").value = StudentList[i].StudentName;
+          document.getElementById("StudentDOB").value = StudentList[i].StudentDOB;
+          document.getElementById("StudentClass").value = StudentList[i].StudentClass;
+          for (let j = 0; j < StudentList[i].Subjects.length; j++) {
+            for (x in document.querySelectorAll("input[name='Subjects']")) {
+              if (document.querySelectorAll("input[name='Subjects']")[x].value == StudentList[i].Subjects[j]) {
+                document.querySelectorAll("input[name='Subjects']")[x].checked = true;
+                break;
+              }
+            }
           }
           for (x in document.querySelectorAll("input[name='AfterSchool']")) {
-            document.querySelectorAll("input[name='AfterSchool']")[x].checked = false;
+            if (document.querySelectorAll("input[name='AfterSchool']")[x].value == StudentList[i].AfterSchool) {
+              document.querySelectorAll("input[name='AfterSchool']")[x].checked = true;
+            }
           }
-          SelectedStudentID=0;
+          break;
         }
-        //Check input data for New / Update
-        function ValidateInput() {
-          let IsValidate = true;
-          document.getElementById("ErrorList").innerHTML = "";
-          if (document.getElementById("StudentName").value == "") {
-            document.getElementById("ErrorList").innerHTML += `<li class="ErrorMessage">Enter Student Name!</li>`;
-            IsValidate = false;
-          }
-          if (isNaN(new Date(document.getElementById("StudentDOB").value))) {
-            document.getElementById("ErrorList").innerHTML += `<li class="ErrorMessage">Enter Student Date of Birth!</li>`;
-            IsValidate = false;
-          }
-          if (document.getElementById("StudentClass").value == "") {
-            document.getElementById("ErrorList").innerHTML += `<li class="ErrorMessage">Select Student Class!</li>`;
-            IsValidate = false;
-          }
-          if (document.querySelectorAll("input[name='Subjects']:checked").length < 4) {
-            document.getElementById("ErrorList").innerHTML += `<li class="ErrorMessage">Select Atleast 4 Subjects!</li>`;
-            IsValidate = false;
-          }
-          if (document.querySelectorAll("input[name='AfterSchool']:checked").length == 0) {
-            document.getElementById("ErrorList").innerHTML += `<li class="ErrorMessage">Select After School Care!</li>`;
-            IsValidate = false;
-          }
-          return IsValidate;
-        }
-        //Load List
-        function LoadList() {
-          document.getElementById("TableBody").innerHTML = "";
-          //Add Rows
-          for (let i = 0; i < StudentList.length; i++) {
-            document.getElementById("TableBody").innerHTML += `<tr>
-                  <td scope="row">${StudentList[i].ID}</td>
-                  <td>${StudentList[i].StudentName}</td>
-                  <td>${StudentList[i].StudentClass}</td>
-                  <td>${StudentList[i].AfterSchool}</td>
-                  </tr>`;
-          }
-          //Table Row MouseOver, MouseOut, Click
-          let TableRow= document.getElementById("TableBody").querySelectorAll("tr");
-          for (let i =0; i< TableRow.length; i++){
-            TableRow[i].addEventListener("onmouseover", function(){
-              ChangeColor(this, true);
-            })
-            TableRow[i].addEventListener("onmouseout", function(){
-              ChangeColor(this, false);
-            })
-            TableRow[i].addEventListener("click", function(){
-              ReadValues(this);
-            })
-          }
-        }
-
-        
-        
-        //Table Row MouseOver, MouseOut, Click
-        function ChangeColor(TableRow, HighLight) {
-          if (HighLight) {
-            TableRow.style.backgroundColor="grey";
-          }
-          else {
-            TableRow.style.backgroundColor="white";
-          }
-        }
-        function ReadValues(TableRow) {
-          SelectedStudentID=parseInt(TableRow.querySelectorAll("td")[0].innerHTML);
-        }
-      })
-    </script>
+      }
+    }
+  </script>
 </body>
+
 </html>
