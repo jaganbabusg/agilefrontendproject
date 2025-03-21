@@ -30,6 +30,8 @@
       border: 1px solid blue;
       width: 150px;
     }
+    
+    tbody tr:hover {font-weight:bold}
 
     .ErrorMessage {
       color: red;
@@ -84,6 +86,12 @@
               </li>
               <li>
                 <a href="#" class="nav-link text-white">Staffs</a>
+              </li>
+              <li>
+                <a href="#" class="nav-link text-white">Parents</a>
+              </li>
+              <li>
+                <a href="#" class="nav-link text-white">Attendance</a>
               </li>
               <li>
                 <a href="#" class="nav-link text-white">FAQ</a>
@@ -185,48 +193,6 @@
                   </tr>
                 </thead>
                 <tbody id="TableBody">
-                  <tr onmouseover="ChangeColor(this, true)" onmouseout="ChangeColor(this, false)"
-                    onclick="ReadValues(this)">
-                    <td>1</td>
-                    <td>Jagan</td>
-                    <td>Primary 1</td>
-                    <td>Home Care</td>
-                  </tr>
-                  <tr onmouseover="ChangeColor(this, true)" onmouseout="ChangeColor(this, false)"
-                    onclick="ReadValues(this)">
-                    <td>2</td>
-                    <td>Jagan</td>
-                    <td>Primary 2</td>
-                    <td>Home Care</td>
-                  </tr>
-                  <tr onmouseover="ChangeColor(this, true)" onmouseout="ChangeColor(this, false)"
-                    onclick="ReadValues(this)">
-                    <td>3</td>
-                    <td>Jagan</td>
-                    <td>Primary 3</td>
-                    <td>Home Care</td>
-                  </tr>
-                  <tr onmouseover="ChangeColor(this, true)" onmouseout="ChangeColor(this, false)"
-                    onclick="ReadValues(this)">
-                    <td>4</td>
-                    <td>Jagan</td>
-                    <td>Primary 4</td>
-                    <td>Home Care</td>
-                  </tr>
-                  <tr onmouseover="ChangeColor(this, true)" onmouseout="ChangeColor(this, false)"
-                    onclick="ReadValues(this)">
-                    <td>5</td>
-                    <td>Jagan</td>
-                    <td>Primary 5</td>
-                    <td>Home Care</td>
-                  </tr>
-                  <tr onmouseover="ChangeColor(this, true)" onmouseout="ChangeColor(this, false)"
-                    onclick="ReadValues(this)">
-                    <td>6</td>
-                    <td>Jagan</td>
-                    <td>Primary 6</td>
-                    <td>Home Care</td>
-                  </tr>
                 </tbody>
               </table>
             </div>
@@ -249,8 +215,32 @@
   <script>
     //Students Array and Student iD
     let StudentList = [], StudentID = 0, SelectedStudentID = 0;
+    //Fetch JSON data from server
+    let JSONDataPath="https://api.jsonbin.io/v3/b/67dbadbd8960c979a5751dce";
+    async function GetJSONData(){
+    	let JSONData = await fetch(JSONDataPath);
+        JSONData= await JSONData.json();
+        StudentList = JSONData.record.StudentList;
+        for (x in StudentList){
+        	StudentList[x].ID >= StudentID ? StudentID = StudentList[x].ID + 1 : StudentID = StudentID;
+        }
+        LoadList();
+    }
+    //Save JSON data to server
+    async function SetJSONData(){
+    	await fetch(JSONDataPath, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Access-Key": "$2a$10$w6T2e6D5UjcgqK/.QaQbbuLJ5RTShlFUMXJCOX1AkB07VYzrW0h0K"
+          },
+          body: JSON.stringify({StudentList: StudentList})
+        });
+    }
     //Window
     window.addEventListener("load", function () {
+      //JSON data
+      GetJSONData();
       //Add New Student Details
       document.getElementById("BtStudentAdd").addEventListener("click", function () {
         //Check for Selected Item in Table
@@ -265,6 +255,7 @@
         //Add New Student
         StudentList.push(AddStudent(StudentID));
         StudentID += 1;
+        SetJSONData();
         LoadList();
         ClearInput();
       })
@@ -289,6 +280,7 @@
             break;
           }
         }
+        SetJSONData();
         LoadList();
         ClearInput();
       })
@@ -304,10 +296,11 @@
         }
         for (let i = 0; i < StudentList.length; i++) {
           if (StudentList[i].ID == SelectedStudentID) {
-            StudentList.slice(i, 1);
+            StudentList.splice(i, 1);
             break;
           }
         }
+        SetJSONData();
         LoadList();
         ClearInput();
       })
@@ -315,7 +308,7 @@
       function AddStudent(StudentID) {
         let StudentName = "", StudentDOB = "", StudentClass = "", Subjects = [], AfterSchool = "";
         StudentName = document.getElementById("StudentName").value;
-        StudentDOB = document.getElementById("StudentDOB").value;
+        StudentDOB = new Date(document.getElementById("StudentDOB").value).toLocaleDateString("en-CA");
         StudentClass = document.getElementById("StudentClass").value;
         for (let i = 0; i < document.querySelectorAll("input[name='Subjects']").length; i++) {
           if (document.querySelectorAll("input[name='Subjects']")[i].checked == true) {
@@ -340,6 +333,10 @@
       }
       for (x in document.querySelectorAll("input[name='AfterSchool']")) {
         document.querySelectorAll("input[name='AfterSchool']")[x].checked = false;
+      }
+      for (let i = 0; i < document.querySelectorAll("tbody tr").length; i++){
+      	let TR = document.querySelectorAll("tbody tr")[i];
+        TR.style.backgroundColor = "white";
       }
       SelectedStudentID = 0;
     }
@@ -374,7 +371,7 @@
       document.getElementById("TableBody").innerHTML = "";
       //Add Rows
       for (let i = 0; i < StudentList.length; i++) {
-        document.getElementById("TableBody").innerHTML += `<tr onmouseover="ChangeColor(this, true);" onmouseout="ChangeColor(this, false);" onclick="ReadValues(this);">
+        document.getElementById("TableBody").innerHTML += `<tr onclick="ReadValues(this)">
                     <td>${StudentList[i].ID}</td>
                     <td>${StudentList[i].StudentName}</td>
                     <td>${StudentList[i].StudentClass}</td>
@@ -382,19 +379,10 @@
                     </tr>`;
       }
     }
-    //Table Row MouseOver, MouseOut, Click
-    function ChangeColor(TableRow, HighLight) {
-      if (HighLight) {
-        TableRow.style.backgroundColor = "grey";
-      }
-      else {
-        TableRow.style.backgroundColor = "white";
-      }
-    }
     function ReadValues(TableRow) {
       ClearInput();
+      TableRow.style.backgroundColor="lightsteelblue";
       SelectedStudentID = parseInt(TableRow.querySelectorAll("td")[0].innerHTML);
-      alert(SelectedStudentID);
       for (let i = 0; i < StudentList.length; i++) {
         if (StudentList[i].ID == SelectedStudentID) {
           document.getElementById("StudentName").value = StudentList[i].StudentName;
@@ -419,5 +407,4 @@
     }
   </script>
 </body>
-
 </html>
